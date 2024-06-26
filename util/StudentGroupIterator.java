@@ -13,24 +13,14 @@ public class StudentGroupIterator implements Iterator<Student> {
         this.studentGroup = studentGroup;
     }
 
-    private Student[] getStudents(){
-        String[] names = studentGroup.students.toString().split(" ");
-        Student[] students = new Student[names.length];
-        int count = 0;
-        for (String name: names) {
-            students[count++] = new Student(name.substring("Student:".length()));
-        }
-        return students;
-    }
     @Override
     public boolean hasNext() {
-        return index < getStudents().length;
+        return index < studentGroup.getStudentGroup().size();
     }
 
     @Override
     public Student next() {
-        Student[] students = getStudents();
-        return students[index++];
+        return studentGroup.getStudentGroup().get(index++);
     }
 
 }

@@ -1,22 +1,30 @@
 package less3_student.model;
 
-public class Student implements Comparable<Student>{
-    public String name;
-    public final int id;
-    private static int count = 1;
+public class Student extends User{
+    private static int countID;
+    private String spesialization;
 
-    public Student(String name) {
+    public Student(String name, String lastName, String spesialization) {
         this.name = name;
-        this.id = count++;
+        this.lastName = lastName;
+        this.spesialization = spesialization;
+        this.id = countID++;
+    }
+    public Student(String name, String lastName){
+        this(name, lastName, "");
+    }
+
+    public String getSpesialization() {
+        return spesialization;
     }
 
     @Override
-    public String toString(){
-        return "Student:" + name;
-    }
-
-    @Override
-    public int compareTo(Student o) {
-        return this.name.length() - o.name.length();
+    public String toString() {
+        return "Student{" +
+                " id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                "spesialization='" + spesialization + '\'' +
+                '}';
     }
 }
